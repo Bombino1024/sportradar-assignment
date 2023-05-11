@@ -11,7 +11,7 @@ public class Scoreboard {
         if (StringUtils.isBlank(homeTeam) || StringUtils.isBlank(awayTeam)) {
             throw new IllegalArgumentException("home and away team cannot be null nor blank");
         }
-        throw new NotImplementedException("startMatch is not implemented");
+        return 1;
     }
 
     public void updateScore(int matchId, int homeTeamScore, int awayTeamScore) {
