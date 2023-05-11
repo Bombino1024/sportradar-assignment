@@ -32,4 +32,11 @@ class ScoreboardTest {
         int matchId = scoreboard.startMatch("home-team", "away-team");
         Assertions.assertTrue(matchId > 0);
     }
+
+    @Test
+    void startMultipleMatchesAndExpectIdsToBeDifferent() {
+        int firstMatchId = scoreboard.startMatch("home-team", "away-team");
+        int secondMatchId = scoreboard.startMatch("home-team", "away-team");
+        Assertions.assertNotEquals(firstMatchId, secondMatchId);
+    }
 }
