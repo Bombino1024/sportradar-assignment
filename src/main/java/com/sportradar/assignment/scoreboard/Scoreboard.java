@@ -23,7 +23,7 @@ public class Scoreboard {
     }
 
     public boolean updateScore(int matchId, int homeTeamScore, int awayTeamScore) {
-        throw new NotImplementedException("updateScore is not implemented");
+        return false;
     }
 
     public List<Match> getSummary() {
