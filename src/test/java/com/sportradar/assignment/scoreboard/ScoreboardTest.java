@@ -26,4 +26,10 @@ class ScoreboardTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("home-team", null));
         Assertions.assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("home-team", ""));
     }
+
+    @Test
+    void startMatchReturnsPositiveInteger() {
+        int matchId = scoreboard.startMatch("home-team", "away-team");
+        Assertions.assertTrue(matchId > 0);
+    }
 }
