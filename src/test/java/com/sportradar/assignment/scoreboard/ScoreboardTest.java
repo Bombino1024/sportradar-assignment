@@ -39,4 +39,9 @@ class ScoreboardTest {
         int secondMatchId = scoreboard.startMatch("home-team", "away-team");
         Assertions.assertNotEquals(firstMatchId, secondMatchId);
     }
+
+    @Test
+    void updateScoreOnEmptyScoreboard() {
+        Assertions.assertFalse(scoreboard.updateScore(1, 0, 0));
+    }
 }

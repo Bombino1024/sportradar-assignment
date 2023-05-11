@@ -22,7 +22,7 @@ public class Scoreboard {
         return idGenerator.getAndIncrement();
     }
 
-    public void updateScore(int matchId, int homeTeamScore, int awayTeamScore) {
+    public boolean updateScore(int matchId, int homeTeamScore, int awayTeamScore) {
         throw new NotImplementedException("updateScore is not implemented");
     }
 
