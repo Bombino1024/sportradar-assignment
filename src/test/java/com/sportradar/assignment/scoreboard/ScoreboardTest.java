@@ -44,4 +44,10 @@ class ScoreboardTest {
     void updateScoreOnEmptyScoreboard() {
         Assertions.assertFalse(scoreboard.updateScore(1, 0, 0));
     }
+
+    @Test
+    void updateScoreIsSuccessful() {
+        int matchId = scoreboard.startMatch("home-team", "away-team");
+        Assertions.assertTrue(scoreboard.updateScore(matchId, 0, 0));
+    }
 }
