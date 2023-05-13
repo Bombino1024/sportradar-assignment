@@ -49,6 +49,6 @@ public class Scoreboard {
     }
 
     public boolean finishGame(int matchId) {
-        throw new NotImplementedException("finishGame not implemented");
+        return false;
     }
 }
