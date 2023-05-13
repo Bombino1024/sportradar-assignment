@@ -50,4 +50,18 @@ class ScoreboardTest {
         int matchId = scoreboard.startMatch("home-team", "away-team");
         Assertions.assertTrue(scoreboard.updateScore(matchId, 0, 0));
     }
+
+    @Test
+    void updateScoreHomeTeamNegativeScoreTest() {
+        int matchId = scoreboard.startMatch("home-team", "away-team");
+        Assertions.assertThrows(IllegalArgumentException.class, () -> scoreboard.updateScore(matchId, -1, 0));
+    }
+
+    @Test
+    void updateScoreAwayTeamNegativeScoreTest() {
+        int matchId = scoreboard.startMatch("home-team", "away-team");
+        Assertions.assertThrows(IllegalArgumentException.class, () -> scoreboard.updateScore(matchId, 5, -5));
+    }
+
+
 }
