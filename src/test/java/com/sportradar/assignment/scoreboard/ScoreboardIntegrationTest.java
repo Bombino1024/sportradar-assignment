@@ -23,8 +23,8 @@ public class ScoreboardIntegrationTest {
 
         boolean scoreUpdated = scoreboard.updateScore(matchId, 1, 0);
         Assertions.assertTrue(scoreUpdated);
-        List<Match> mathces = scoreboard.getSummary();
-        Match match = mathces.get(0);
+        List<Match> matches = scoreboard.getSummary();
+        Match match = matches.get(0);
         Assertions.assertEquals(1, match.getHomeTeam().getScore());
         Assertions.assertEquals(0, match.getAwayTeam().getScore());
 

@@ -1,6 +1,5 @@
 package com.sportradar.assignment.scoreboard.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
