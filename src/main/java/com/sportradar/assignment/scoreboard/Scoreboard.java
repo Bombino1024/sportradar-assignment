@@ -1,14 +1,14 @@
 package com.sportradar.assignment.scoreboard;
 
+import com.sportradar.assignment.scoreboard.comparator.OrderByTotalScoreComparator;
 import com.sportradar.assignment.scoreboard.model.Match;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class Scoreboard {
@@ -45,7 +45,7 @@ public class Scoreboard {
     }
 
     public List<Match> getSummary() {
-        return new ArrayList<>(matches.values());
+        return matches.values().stream().sorted(new OrderByTotalScoreComparator()).collect(Collectors.toList());
     }
 
     public boolean finishGame(int matchId) {
