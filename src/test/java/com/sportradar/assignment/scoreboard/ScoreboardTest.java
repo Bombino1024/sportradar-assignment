@@ -1,8 +1,11 @@
 package com.sportradar.assignment.scoreboard;
 
+import com.sportradar.assignment.scoreboard.model.Match;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,5 +66,13 @@ class ScoreboardTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> scoreboard.updateScore(matchId, 5, -5));
     }
 
-
+    @Test
+    void updateScoreExpectScoreToBeUpdated() {
+        int matchId = scoreboard.startMatch("home-team", "away-team");
+        scoreboard.updateScore(matchId, 2, 3);
+        List<Match> matches = scoreboard.getSummary();
+        Match match = matches.get(0);
+        Assertions.assertEquals(2, match.getHomeTeam().getScore());
+        Assertions.assertEquals(3, match.getAwayTeam().getScore());
+    }
 }
