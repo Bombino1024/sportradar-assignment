@@ -49,6 +49,7 @@ public class Scoreboard {
     }
 
     public boolean finishGame(int matchId) {
-        return false;
+        Match match = matches.remove(matchId);
+        return match != null;
     }
 }
