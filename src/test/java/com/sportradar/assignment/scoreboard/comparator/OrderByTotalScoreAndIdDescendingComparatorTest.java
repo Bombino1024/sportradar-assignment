@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class OrderByTotalScoreComparatorTest {
+class OrderByTotalScoreAndIdDescendingComparatorTest {
 
-    private OrderByTotalScoreComparator comparator;
+    private OrderByTotalScoreAndIdDescendingComparator comparator;
 
     @BeforeEach
     void setUp() {
-        this.comparator = new OrderByTotalScoreComparator();
+        this.comparator = new OrderByTotalScoreAndIdDescendingComparator();
     }
 
     @Test
@@ -38,17 +38,17 @@ class OrderByTotalScoreComparatorTest {
     }
 
     @Test
-    void compareTeamScoresAreEqualsTest() {
-        Match match1 = new Match(1, "home-team-1", "away-team-1");
-        Match match2 = new Match(2, "home-team-2", "away-team-2");
-        Assertions.assertEquals(0, comparator.compare(match1, match2));
-    }
-
-    @Test
     void compareFirstTeamTotalScoreLowerTest() {
         Match match1 = new Match(1, "home-team-1", "away-team-1");
         Match match2 = new Match(2, "home-team-2", "away-team-2");
         match2.getHomeTeam().setScore(1);
+        Assertions.assertEquals(1, comparator.compare(match1, match2));
+    }
+
+    @Test
+    void compareEqualScoreGreaterIdHasPrecedenceTest() {
+        Match match1 = new Match(1, "home-team-1", "away-team-1");
+        Match match2 = new Match(2, "home-team-2", "away-team-2");
         Assertions.assertEquals(1, comparator.compare(match1, match2));
     }
 }

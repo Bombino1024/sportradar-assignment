@@ -4,7 +4,7 @@ import com.sportradar.assignment.scoreboard.model.Match;
 
 import java.util.Comparator;
 
-public class OrderByTotalScoreComparator implements Comparator<Match> {
+public class OrderByTotalScoreAndIdDescendingComparator implements Comparator<Match> {
 
     @Override
     public int compare(Match match1, Match match2) {
@@ -15,6 +15,9 @@ public class OrderByTotalScoreComparator implements Comparator<Match> {
         } else if (match2 == null) {
             return -1;
         }
-        return match2.getTotalScore() - match1.getTotalScore();
+        if (match1.getTotalScore() != match2.getTotalScore()) {
+            return match2.getTotalScore() - match1.getTotalScore();
+        }
+        return match2.getId() - match1.getId();
     }
 }

@@ -1,6 +1,6 @@
 package com.sportradar.assignment.scoreboard;
 
-import com.sportradar.assignment.scoreboard.comparator.OrderByTotalScoreComparator;
+import com.sportradar.assignment.scoreboard.comparator.OrderByTotalScoreAndIdDescendingComparator;
 import com.sportradar.assignment.scoreboard.model.Match;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -45,7 +45,7 @@ public class Scoreboard {
     }
 
     public List<Match> getSummary() {
-        return matches.values().stream().sorted(new OrderByTotalScoreComparator()).collect(Collectors.toList());
+        return matches.values().stream().sorted(new OrderByTotalScoreAndIdDescendingComparator()).collect(Collectors.toList());
     }
 
     public boolean finishGame(int matchId) {
