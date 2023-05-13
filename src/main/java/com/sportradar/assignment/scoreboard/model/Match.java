@@ -17,6 +17,12 @@ public class Match {
         this.awayTeam = new Team(awayTeam);
     }
 
+    public Match(Match match) {
+        this.id = match.id;
+        this.homeTeam = new Team(match.homeTeam);
+        this.awayTeam = new Team(match.awayTeam);
+    }
+
     public int getTotalScore() {
         return homeTeam.getScore() + awayTeam.getScore();
     }

@@ -45,7 +45,12 @@ public class Scoreboard {
     }
 
     public List<Match> getSummary() {
-        return matches.values().stream().sorted(new OrderByTotalScoreAndIdDescendingComparator()).collect(Collectors.toList());
+        return matches
+                .values()
+                .stream()
+                .map(Match::new)
+                .sorted(new OrderByTotalScoreAndIdDescendingComparator())
+                .collect(Collectors.toList());
     }
 
     public boolean finishGame(int matchId) {

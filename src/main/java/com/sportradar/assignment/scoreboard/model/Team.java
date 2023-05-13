@@ -13,4 +13,9 @@ public class Team {
         this.name = name;
         this.score = 0;
     }
+
+    public Team(Team team) {
+        this.name = team.name;
+        this.score = team.score;
+    }
 }
