@@ -30,6 +30,9 @@ public class Scoreboard {
     }
 
     public boolean updateScore(int matchId, int homeTeamScore, int awayTeamScore) {
+        if (homeTeamScore < 0 || awayTeamScore < 0) {
+            throw new IllegalArgumentException("Neither home nor away team can receive negative score");
+        }
         Match match = matches.get(matchId);
         if (match == null) {
             log.warn("Unable to update score for match with id {}, match not found", matchId);
