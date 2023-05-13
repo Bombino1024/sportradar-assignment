@@ -2,9 +2,9 @@ package com.sportradar.assignment.scoreboard;
 
 import com.sportradar.assignment.scoreboard.model.Match;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -38,10 +38,12 @@ public class Scoreboard {
             log.warn("Unable to update score for match with id {}, match not found", matchId);
             return false;
         }
+        match.getHomeTeam().setScore(homeTeamScore);
+        match.getAwayTeam().setScore(awayTeamScore);
         return true;
     }
 
     public List<Match> getSummary() {
-        throw new NotImplementedException("getSummary is not implemented");
+        return new ArrayList<>(matches.values());
     }
 }
