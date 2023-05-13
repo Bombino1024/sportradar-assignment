@@ -2,6 +2,7 @@ package com.sportradar.assignment.scoreboard;
 
 import com.sportradar.assignment.scoreboard.model.Match;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -45,5 +46,9 @@ public class Scoreboard {
 
     public List<Match> getSummary() {
         return new ArrayList<>(matches.values());
+    }
+
+    public boolean finishGame(int matchId) {
+        throw new NotImplementedException("finishGame not implemented");
     }
 }

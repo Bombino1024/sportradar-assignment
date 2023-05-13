@@ -75,4 +75,9 @@ class ScoreboardTest {
         Assertions.assertEquals(2, match.getHomeTeam().getScore());
         Assertions.assertEquals(3, match.getAwayTeam().getScore());
     }
+
+    @Test
+    void finishGameOnEmptyScoreBoard() {
+        Assertions.assertFalse(scoreboard.finishGame(1));
+    }
 }
