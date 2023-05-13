@@ -32,4 +32,26 @@ public class ScoreboardIntegrationTest {
         Assertions.assertTrue(matchRemoved);
         Assertions.assertTrue(scoreboard.getSummary().isEmpty());
     }
+
+    @Test
+    void getSummaryReturnsDifferentInstanceOfMatchesListThenIsInScoreboardTest() {
+        scoreboard.startMatch("home-team", "away-team");
+        List<Match> matches = scoreboard.getSummary();
+        matches.add(new Match(1, "home-team", "away-team"));
+        Assertions.assertEquals(1, scoreboard.getSummary().size());
+    }
+
+    @Test
+    void changesOfMatchOutsideOfScoreboardDoesNotAffectStoredMatchTest() {
+        int matchId = scoreboard.startMatch("home-team", "away-team");
+        scoreboard.updateScore(matchId, 3, 7);
+        List<Match> matches = scoreboard.getSummary();
+        Match updatedMatch = matches.get(0);
+        updatedMatch.getHomeTeam().setScore(9);
+        updatedMatch.getAwayTeam().setScore(13);
+        Match storedMatch = scoreboard.getSummary().get(0);
+        Assertions.assertEquals(storedMatch.getId(), updatedMatch.getId());
+        Assertions.assertNotEquals(storedMatch.getHomeTeam().getScore(), updatedMatch.getHomeTeam().getScore());
+        Assertions.assertNotEquals(storedMatch.getAwayTeam().getScore(), updatedMatch.getAwayTeam().getScore());
+    }
 }
