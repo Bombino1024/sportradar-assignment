@@ -80,4 +80,16 @@ class ScoreboardTest {
     void finishGameOnEmptyScoreBoard() {
         Assertions.assertFalse(scoreboard.finishGame(1));
     }
+
+    @Test
+    void finishGameInvalidMatchIdTest() {
+        int matchId = scoreboard.startMatch("home-team", "away-team");
+        Assertions.assertFalse(scoreboard.finishGame(matchId + 1));
+    }
+
+    @Test
+    void finishGameSuccessTest() {
+        int matchId = scoreboard.startMatch("home-team", "away-team");
+        Assertions.assertTrue(scoreboard.finishGame(matchId));
+    }
 }
