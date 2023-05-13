@@ -15,8 +15,10 @@ public class OrderByTotalScoreAndIdDescendingComparator implements Comparator<Ma
         } else if (match2 == null) {
             return -1;
         }
-        if (match1.getTotalScore() != match2.getTotalScore()) {
-            return match2.getTotalScore() - match1.getTotalScore();
+        int match1TotalScore = match1.getTotalScore();
+        int match2TotalScore = match2.getTotalScore();
+        if (match1TotalScore != match2TotalScore) {
+            return match2TotalScore - match1TotalScore;
         }
         return match2.getId() - match1.getId();
     }
