@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ScoreboardTest {
 
     private Scoreboard scoreboard;
@@ -91,5 +89,21 @@ class ScoreboardTest {
     void finishGameSuccessTest() {
         int matchId = scoreboard.startMatch("home-team", "away-team");
         Assertions.assertTrue(scoreboard.finishGame(matchId));
+    }
+
+    @Test
+    void getSummaryOrderedByTotalScoreTest() {
+        int matchId = scoreboard.startMatch("home-team-1", "away-team-1");
+        scoreboard.updateScore(matchId, 1, 0);
+        scoreboard.startMatch("home-team-2", "away-team-2");
+        Assertions.assertEquals(matchId, scoreboard.getSummary().get(0).getId());
+    }
+
+    @Test
+    void getSummaryOrderedByTotalScoreExpectOrderIsChangedTest() {
+        scoreboard.startMatch("home-team-1", "away-team-1");
+        int matchId = scoreboard.startMatch("home-team-2", "away-team-2");
+        scoreboard.updateScore(matchId, 1, 0);
+        Assertions.assertEquals(matchId, scoreboard.getSummary().get(0).getId());
     }
 }
